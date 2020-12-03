@@ -1,0 +1,12 @@
+<table class="table text-center">
+    <thead>
+        <tr>
+            <th>Carrito</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor = "let juguete of (carritoLista$ | async)"> 
+            <td>{{juguete.categoria}} : {{juguete.suma}}</td>   
+        </tr>
+    </tbody>
+</table>

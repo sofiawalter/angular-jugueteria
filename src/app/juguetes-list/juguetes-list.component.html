@@ -1,0 +1,26 @@
+<table class="table text-center">
+    <thead>
+        <tr>
+            <th>Categoria</th>
+            <th>Edad</th>
+            <th>Envio</th>
+            <th>Precio</th>
+            <th>Cantidad</th>
+            <th>Comprar</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor='let juguete of juguetes' [ngClass]="{'oferta':juguete.oferta}"> 
+            <td>{{juguete.categoria}}</td>
+            <td>{{juguete.edad}}</td>
+            <td>{{juguete.envio}}</td>
+            <td>{{juguete.precio}}</td>
+            <td><span class="badge badge-dark" *ngIf="juguete.stock==0">Sin stock</span></td>   
+            <td>   
+                <app-input-integer [(suma)]="juguete.suma" [max]="juguete.stock" *ngIf="juguete.stock" (limiteProd)="limiteProd($event)"></app-input-integer>
+                <button class="btn btn-primary btn-sm" (click)="aniadirCarrito(juguete)">Comprar</button>
+            </td> 
+            <td><img [src]="juguete.imagen" [alt]="juguete.categoria"></td>
+        </tr>
+    </tbody>
+</table>
